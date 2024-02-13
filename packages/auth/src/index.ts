@@ -1,9 +1,9 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { env } from "../../core/lib/utils";
-import { initDB } from "../../core/db";
+import { env, initDB } from '@untitled/core'
 
 const app = new Hono();
+
 async function main() {
   await initDB();
   app.get("/", (c) => {
@@ -17,4 +17,5 @@ async function main() {
     port: env.PORT,
   });
 }
+
 main();

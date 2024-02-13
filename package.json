@@ -1,0 +1,14 @@
+{
+  "name": "@untitled/root",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "auth:dev": "pnpm -F @untitled/auth run dev",
+    "core:migrate": "pnpm -F @untitled/core run migrate",
+    "core:gen-migrate": "pnpm -F @untitled/core gen-migrate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

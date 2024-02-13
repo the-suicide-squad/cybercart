@@ -1,4 +1,5 @@
 import z from "zod";
+
 export const envSchema = z.object({
   DATABASE_HOST: z.string().min(1),
   DATABASE_PORT: z
@@ -13,4 +14,5 @@ export const envSchema = z.object({
     .transform((val) => parseInt(val, 10))
     .pipe(z.number()),
 });
+
 export type EnvSchema = z.infer<typeof envSchema>;
