@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 13 17 23;
+    --fg: 230 237 243;
+    --border: 48 54 61;
+    --brand: 38 166 65;
+    --dim: 132 141 151;
+  }
+
+  html, body, #root {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-bg text-fg;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .text-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
