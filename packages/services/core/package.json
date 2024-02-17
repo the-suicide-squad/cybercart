@@ -1,5 +1,5 @@
 {
-  "name": "@untitled/core",
+  "name": "@cybercart/core",
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {

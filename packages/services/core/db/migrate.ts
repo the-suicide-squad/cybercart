@@ -6,7 +6,7 @@ import path from "path";
 
 async function main() {
   try {
-    await initDB();
+    await initDB()
     const connection = new pg.Connection({
       host: env.DATABASE_HOST,
       port: env.DATABASE_PORT,

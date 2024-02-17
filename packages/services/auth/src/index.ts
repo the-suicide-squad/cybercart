@@ -1,6 +1,6 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { env, initDB } from "@untitled/core";
+import { env, initDB } from "@cybercart/core";
 import { HTTPException } from "hono/http-exception";
 const app = new Hono();
 

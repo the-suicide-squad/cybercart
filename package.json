@@ -1,12 +1,12 @@
 {
-  "name": "@untitled/root",
+  "name": "@cybercart/root",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "auth:dev": "pnpm -F @untitled/auth run dev",
-    "core:migrate": "pnpm -F @untitled/core run migrate",
-    "core:gen-migrate": "pnpm -F @untitled/core gen-migrate"
+    "auth:dev": "pnpm -F @cybercart/auth run dev",
+    "core:migrate": "pnpm -F @cybercart/core run migrate",
+    "core:gen-migrate": "pnpm -F @cybercart/core gen-migrate"
   },
   "keywords": [],
   "author": "",

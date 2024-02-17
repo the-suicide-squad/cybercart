@@ -1,18 +1,17 @@
 version: '3.8'
 
 services:
-  postgres:
+  cybercart-db:
     image: postgres:latest
-    container_name: untitled_postgres_container
+    container_name: cybercart-db
     environment:
-      POSTGRES_DB: untitled
+      POSTGRES_DB: cybercart
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
 volumes:
   postgres_data:
 
