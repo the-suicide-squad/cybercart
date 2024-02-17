@@ -2,7 +2,7 @@ import { User } from "../../../types"
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Link } from "@tanstack/react-router";
 import { User as UserIcon } from 'lucide-react'
-import { LogOut as LogOutIcon } from 'lucide-react'
+import { LogOut as LogOutIcon, ShoppingCart as ShoppingCartIcon } from 'lucide-react'
 
 type Props = {
   user: User
@@ -11,9 +11,13 @@ type Props = {
 export function Header(props: Props) {
   const { user } = props
   return (
-    <div className="border border-border px-4 py-3 flex">
+    <div className="border border-border px-4 py-3 flex items-center justify-between">
+      <Link to="/" className="flex items-center gap-2">
+        <ShoppingCartIcon strokeWidth={1} />
+        <span className="font-semibold font-xl relative top-[2px]">Cybercart</span>
+      </Link>
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger className="ml-auto flex items-center gap-2 mr-4">
+        <DropdownMenu.Trigger className="flex items-center gap-2 mr-4">
           <img src={user.avatar} className="h-8 w-8 border-border rounded-full" alt="avatar" />
           <span>{user.username}</span>
         </DropdownMenu.Trigger>

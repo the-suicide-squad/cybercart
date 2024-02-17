@@ -1,4 +1,4 @@
-import { createLazyFileRoute } from '@tanstack/react-router';
+import { Link, createLazyFileRoute } from '@tanstack/react-router';
 import { Product as TProduct } from '../types'
 import { Product } from '../pages/home/components/Product';
 
@@ -18,9 +18,9 @@ function HomePage() {
   return (
     <div>
       <div className="flex">
-        <button className="bg-brand text-white px-3 py-1 mt-4 ml-auto mr-8 rounded-lg">
+        <Link to="/create" className="bg-brand text-white px-3 py-1 mt-4 ml-auto mr-8 rounded-lg">
           + Create Product
-        </button>
+        </Link>
       </div>
       <div className="px-8">
         <h1 className="pb-4 font-semibold text-2xl">Your Products</h1>

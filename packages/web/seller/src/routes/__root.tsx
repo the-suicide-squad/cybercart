@@ -8,7 +8,7 @@ const user = {
 
 export const Route = createRootRoute({
   component: () => (
-    <main>
+    <main className="h-full flex flex-col">
       <Header user={user} />
       <Outlet />
     </main>
