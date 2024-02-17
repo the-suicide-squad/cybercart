@@ -8,7 +8,7 @@
     --fg: 230 237 243;
     --border: 48 54 61;
     --brand: 38 166 65;
-    --dim: 132 141 151;
+    --dim: 132 141 151; /* #848D97D9 */
   }
 
   html, body, #root {
@@ -29,5 +29,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+  }
+
+  *:focus,
+  *:active {
+    outline: none;
   }
 }

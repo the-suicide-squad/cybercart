@@ -12,7 +12,13 @@ export default {
         border: 'rgb(var(--border) / 1)',
         brand: 'rgb(var(--brand) / 1)',
         dim: 'rgb(var(--dim) / 1)',
-      }
+      },
+      boxShadow: {
+        'sheet': '0 0 0 1px #30363d, 0 16px 32px rgba(1, 4, 9, 0.85)',
+      },
+      data: {
+        highlighted: 'highlighted',
+      },
     },
   },
   plugins: [],
