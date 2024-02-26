@@ -1,7 +1,6 @@
 import { ZodError } from "zod";
 import { EnvSchema, envSchema } from "../zod/env";
 import dotenv from "dotenv";
-
 function parseEnvVars(): EnvSchema {
   let data!: EnvSchema;
   dotenv.config();
