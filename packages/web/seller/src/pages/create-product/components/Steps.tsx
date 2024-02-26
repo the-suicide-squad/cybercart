@@ -1,10 +1,11 @@
+import { Step } from "../../../hooks/useMultiForm"
 import { cn } from "../../../lib/utils"
-import { SetState  } from "../../../types"
 
 type Props = {
-  step: number
-  setStep: SetState<number>
+  step: Step
+  moveToStep: (step: number) => void
 }
+
 const steps = [
   { text: "Basic Info" },
   { text: "About & Pricing" },
@@ -12,14 +13,18 @@ const steps = [
 ]
 
 export function Steps(props: Props) {
-  const { step, setStep } = props
+  const { step, moveToStep } = props
   return (
     <div className="min-w-[200px] border-r border-border p-4 flex flex-col gap-6">
       {steps.map((item, i) => {
+        const currentStep = step.steps.find((_, idx) => i === idx)
         return (
-          <button key={item.text} onClick={() => setStep(i+1)} className="flex gap-2 items-center">
+          <button disabled={!currentStep?.unlocked} key={item.text} onClick={() => {
+            // TODO: validate current step
+            moveToStep(i)
+          }} className="flex gap-2 items-center disabled:text-dim disabled:cursor-not-allowed">
             <span className={cn("border border-border rounded-full w-7 h-7 text-sm flex items-center justify-center", {
-              "bg-brand text-white border-brand": step === i + 1
+              "bg-brand text-white border-brand": step.current === i
             })}>{i+1}</span>
             <span>{item.text}</span>
           </button>

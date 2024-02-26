@@ -1,12 +1,12 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router';
-import { Product as TProduct } from '../types'
+import { ProductCard } from '../types'
 import { Product } from '../pages/home/components/Product';
 
 export const Route = createLazyFileRoute('/')({
   component: HomePage,
 })
 
-const products: Array<TProduct> = [
+const products: Array<ProductCard> = [
   { id: 1, name: "HTMX & Go", status: "published", stats: { sales: 69, revenue: 420 } },
   { id: 2, name: "Developer Productivity", status: "published", stats: { sales: 69, revenue: 420 } },
   { id: 3, name: "The Last Algorithm You'll ever need", status: "unpublished", stats: { sales: 69, revenue: 420 } },

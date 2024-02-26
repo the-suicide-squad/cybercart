@@ -11,12 +11,23 @@
     --dim: 132 141 151; /* #848D97D9 */
   }
 
+  /* TODO: this is bad for accessibility, someone fix it */
+  *:focus,
+  *:active {
+    outline: none;
+  }
+
   html, body, #root {
     @apply h-full;
   }
 
   body {
     @apply bg-bg text-fg;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-dim/60;
   }
 
   .cards {
@@ -29,11 +40,5 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-  }
-
-  /* TODO: this is bad for accessibility, someone fix it */
-  *:focus,
-  *:active {
-    outline: none;
   }
 }

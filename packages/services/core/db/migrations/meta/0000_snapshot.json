@@ -1,9 +1,74 @@
 {
-  "id": "d73efcab-a4af-4654-b9ba-821c31a79f28",
+  "id": "bbfe87c6-7a54-4633-af21-66b42cb4ab06",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
+    "products": {
+      "name": "products",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "productType",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "about": {
+          "name": "about",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "price": {
+          "name": "price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "productStatus",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'unpublished'"
+        },
+        "resources": {
+          "name": "resources",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "session": {
       "name": "session",
       "schema": "",
@@ -44,7 +109,7 @@
         },
         "role": {
           "name": "role",
-          "type": "role",
+          "type": "userRole",
           "primaryKey": false,
           "notNull": false
         },
@@ -68,8 +133,22 @@
     }
   },
   "enums": {
-    "role": {
-      "name": "role",
+    "productStatus": {
+      "name": "productStatus",
+      "values": {
+        "unpublished": "unpublished",
+        "published": "published"
+      }
+    },
+    "productType": {
+      "name": "productType",
+      "values": {
+        "files": "files",
+        "videos": "videos"
+      }
+    },
+    "userRole": {
+      "name": "userRole",
       "values": {
         "seller": "seller",
         "buyer": "buyer"

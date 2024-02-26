@@ -1,8 +1,25 @@
 import { useRef } from "react"
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { ImagePlus, FileArchive, FileVideo } from 'lucide-react'
+import { Input } from "../../../components/Input"
+import { ArrowRight } from 'lucide-react'
+import { Button } from "../../../components/Button"
+import { z } from 'zod'
+import { SubmitHandler } from "react-hook-form"
+import { useZodFormReturn } from "../../../hooks/useZodForm"
+import { CreateProduct } from "../../../types"
+import { basicInfoSchema } from "../../../hooks/useMultiForm"
 
-export function BasicInfo() {
+type Props = {
+  form: useZodFormReturn<typeof basicInfoSchema>,
+  defaultValues: z.infer<typeof basicInfoSchema>
+  nextStep: (step: number) => void
+  updateProduct: (product: Partial<CreateProduct>) => void
+}
+
+export function BasicInfo(props: Props) {
+  const { defaultValues, nextStep: unlockStep, updateProduct, form } = props 
+  const { register, formState, handleSubmit, setValue } = form
   const imageInputRef = useRef<HTMLInputElement>(null)
 
   function onFilePick(e: React.ChangeEvent<HTMLInputElement>) {
@@ -13,17 +30,30 @@ export function BasicInfo() {
     }
   }
 
-  return (
-    <form className="p-4 flex-1 flex flex-col justify-between gap-6">
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" autoComplete="off" className="bg-bg border border-border py-1.5 px-2 rounded-lg" placeholder="Enter product name" />
-      </div>
+  const onSubmit: SubmitHandler<z.infer<typeof basicInfoSchema>> = (data) => {
+    updateProduct(data)
+    unlockStep(2)
+  }
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="desc">Description</label>
-        <input type="text" id="desc" autoComplete="off" className="bg-bg border border-border py-1.5 px-2 rounded-lg" placeholder="Enter product description" />
-      </div>
+  return (
+    <form id="createProduct-1" onSubmit={handleSubmit(onSubmit)} className="p-4 flex-1 flex flex-col justify-between gap-6">
+      <Input 
+        label="Name" 
+        autoComplete="off"
+        placeholder="Enter product name"
+        type="text"
+        error={formState.errors.name?.message}
+        {...register('name')}
+      />
+
+      <Input 
+        label="Description" 
+        autoComplete="off"
+        placeholder="Enter product description"
+        type="text"
+        error={formState.errors.description?.message}
+        {...register('description')}
+      />
 
       <div className="flex flex-col gap-2">
         <label htmlFor="image">Image</label>
@@ -39,7 +69,7 @@ export function BasicInfo() {
 
       <div className="flex flex-col gap-3">
         <p>Type</p>
-        <RadioGroup.Root defaultValue="files" className="flex flex-col gap-6">
+        <RadioGroup.Root defaultValue={defaultValues.type} className="flex flex-col gap-6" onValueChange={value => setValue('type', value as any)}>
           <div className="flex gap-3 items-start">
             <RadioGroup.Item className="h-5 w-5 border border-border rounded-full flex items-center justify-center" value="files" id="files">
               <RadioGroup.Indicator className="bg-brand block h-2.5 w-2.5 rounded-full" />
@@ -65,6 +95,11 @@ export function BasicInfo() {
             </label>
           </div>
         </RadioGroup.Root>
+
+        <Button className="inline-flex self-end mt-8">
+          <span>Next</span>
+          <ArrowRight strokeWidth={1.5} />
+        </Button>
       </div>
     </form>
   )

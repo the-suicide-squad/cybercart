@@ -1,9 +1,9 @@
 import { cn } from "../../../lib/utils"
-import { Product as TProduct } from "../../../types"
+import { ProductCard } from "../../../types"
 import { MoreVertical } from 'lucide-react'
 
 type Props = {
-  product: TProduct
+  product: ProductCard
 }
 
 export function Product(props: Props) {

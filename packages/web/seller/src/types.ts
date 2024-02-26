@@ -3,7 +3,7 @@ export type User = {
   avatar: string
 }
 
-export type Product = {
+export type ProductCard = {
   name: string
   id: number
   status: "unpublished" | "published"
@@ -12,5 +12,16 @@ export type Product = {
     revenue: number
   }
 }
+
+export type CreateProduct = {
+  name: string
+  description: string
+  image: string
+  type: ProductType
+  about: string
+  price: number
+}
+
+export type ProductType = "files" | "videos"
 
 export type SetState<T> = React.Dispatch<React.SetStateAction<T>>

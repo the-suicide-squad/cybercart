@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "auth:dev": "pnpm -F @cybercart/auth run dev",
+    "product:dev": "pnpm -F @cybercart/product run dev",
     "core:migrate": "pnpm -F @cybercart/core run migrate",
     "core:gen-migrate": "pnpm -F @cybercart/core gen-migrate"
   },
